@@ -33,7 +33,7 @@ def handler(event, context):
             salary_count += 1
 
     message = f'Hello!\n\n'
-    message += f'Remaining budget for the last 30 days: {budget}\n'
+    message += f'Remaining budget for the last 30 days: {budget}€\n'
     
     if salary_count != 1:
         message += f'\nWarning: Number of "Salary" transactions is {salary_count} instead of 1\n'
