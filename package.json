@@ -1,0 +1,33 @@
+{
+  "name": "finanz-tracker",
+  "version": "0.1.0",
+  "bin": {
+    "finanz-tracker": "bin/finanz-tracker.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.130.0",
+    "@types/node": "10.17.27",
+    "aws-cdk": "1.130.0",
+    "prettier": "2.3.0",
+    "ts-node": "^9.0.0",
+    "typescript": "~3.9.7"
+  },
+  "dependencies": {
+    "@aws-cdk/aws-events": "1.130.0",
+    "@aws-cdk/aws-events-targets": "1.130.0",
+    "@aws-cdk/aws-iam": "1.130.0",
+    "@aws-cdk/aws-lambda": "1.130.0",
+    "@aws-cdk/aws-lambda-python": "1.130.0",
+    "@aws-cdk/aws-s3": "1.130.0",
+    "@aws-cdk/core": "1.130.0",
+    "@aws-cdk/aws-secretsmanager": "1.130.0",
+    "@aws-cdk/aws-sns": "1.130.0",
+    "@aws-cdk/aws-sns-subscriptions": "1.130.0",
+    "source-map-support": "^0.5.16"
+  }
+}
