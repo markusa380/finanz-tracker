@@ -1,11 +1,14 @@
 import json
-from fints.client import FinTS3PinTanClient
-from mt940.models import Amount, Transaction
-from lib.secrets import get_bank_pin
-from lib.config import *
-from lib.notifications import send_email
 import logging
 from datetime import datetime, time, timedelta
+
+from fints.client import FinTS3PinTanClient
+
+from lib.config import *
+from lib.notifications import send_email
+from lib.secrets import get_bank_pin
+
+salary_keywords = {'Salary', 'Insolvenz', 'Gehalt'}
 
 def handler(event, context):
     print('request: {}'.format(json.dumps(event)))
@@ -26,10 +29,16 @@ def handler(event, context):
 
     for transaction in transactions:
         data = transaction.data
-        if not data['purpose'] or 'Salary' not in data['purpose']:
+        has_keyword = False
+        if data['purpose']:
+            for keyword in salary_keywords:
+                if keyword.lower() in data['purpose'].lower():
+                    has_keyword = True
+
+        if not has_keyword:
             amount = data['amount'].amount
             budget = budget + amount
-        elif data['purpose'] and 'Salary' in data['purpose']:
+        else:
             salary_count += 1
 
     message = f'Hello!\n\n'
